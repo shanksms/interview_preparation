@@ -1,10 +1,10 @@
 package com.shashank.epi.bitwise;
 
-class CountSetBits {
+class BitAlgorithms {
     public static void main(String[] args) {
     	int number = 7;
     	
-    	System.out.println(new CountSetBits().countSetBits(number));
+    	System.out.println(new BitAlgorithms().countSetBits(number));
 
     }
     
