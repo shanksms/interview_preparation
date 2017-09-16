@@ -3,8 +3,8 @@ package com.shashank.epi.bitwise;
 class BitAlgorithms {
    
     
-    public int countSetBits(int number) {
-    	int count = 0;
+    public long countSetBits(long number) {
+    	long count = 0;
     	while (number != 0) {
     		count = count + (number & 1);
     		//System.out.println(Integer.toBinaryString(number));
@@ -39,6 +39,39 @@ class BitAlgorithms {
     	
     	
     	return (number ^ bitMask);
+    }
+    
+    public long closestNumberWithSameWeight(long number) {
+    	
+    	long setBits = countSetBits(number);
+    	long numberWithSameWeight = -1;
+    	/*
+    	 * We have to alternate between addition and subtraction 
+    	 */
+    	boolean addFlag = false;
+    	long toAdd = 1;
+    	long toSubtract = 1;
+    	
+    	while(true) {
+    		if(addFlag) {
+    			if (setBits == countSetBits(number + toAdd)) {
+    				numberWithSameWeight = number + toAdd;
+    				break;
+    			} else {
+    				toAdd += 1;
+    			}
+    		} else {
+    			if (setBits == countSetBits(number - toSubtract)) {
+    				numberWithSameWeight = number - toSubtract;
+    				break;
+    			} else {
+    				toSubtract += 1;
+    			}
+    		}
+    	}
+    	
+    	
+    	return numberWithSameWeight;
     }
     
     private long bitAtGivenPosition(int position, long number) {

@@ -46,4 +46,11 @@ public class TestBitAlgorithms {
 		String expectedBinaryRepAfterSwap = "10001";
 		assertEquals(expectedBinaryRepAfterSwap, Long.toBinaryString(bitAlgorithms.swapBits(0, 2, number)));
 	}
+	
+	@Test
+	public void testClosestNumberWithSameWeight() {
+		long number = 8;
+		//expected output is 4
+		assertEquals(4, bitAlgorithms.closestNumberWithSameWeight(number));
+	}
 }
