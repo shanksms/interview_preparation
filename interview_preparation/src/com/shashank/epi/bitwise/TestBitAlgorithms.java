@@ -36,4 +36,14 @@ public class TestBitAlgorithms {
 		long number = 1;
 		assertEquals(1, bitAlgorithms.computeBitParity(number));
 	}
+	
+	@Test
+	public void testSwapBits() {
+		//Binary representation is 10100
+		long number = 20;
+		int i = 0, j = 2;
+		//Expected binary representation after swapping is 10001
+		String expectedBinaryRepAfterSwap = "10001";
+		assertEquals(expectedBinaryRepAfterSwap, Long.toBinaryString(bitAlgorithms.swapBits(0, 2, number)));
+	}
 }

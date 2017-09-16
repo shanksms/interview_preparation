@@ -27,5 +27,24 @@ class BitAlgorithms {
     	return parity;
     }
     
+    public long swapBits(int i, int j, long number) {
+    	long bitAtIthPosition = bitAtGivenPosition(i, number);
+    	long bitAtJthPosition = bitAtGivenPosition(j, number);
+    	//if bits at both positions are same, do nothing.
+    	if (bitAtIthPosition == bitAtJthPosition) {
+    		return number;
+    	}
+    	
+    	long bitMask = (1 << i) | (1 << j);
+    	
+    	
+    	return (number ^ bitMask);
+    }
+    
+    private long bitAtGivenPosition(int position, long number) {
+    	number = number >>> position;
+    	return number & 1;
+    	
+    }
     
 }
