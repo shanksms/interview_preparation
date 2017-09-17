@@ -74,6 +74,25 @@ class BitAlgorithms {
     	return numberWithSameWeight;
     }
     
+    public long closestNumberWithSameWeightOptimized(long number) {
+		//find out 2 consecutive rightmost bits that differ
+		//since number is guaranteed to be positive, we will only focus on 63 digits and leave the MSB.
+		
+		long numberOfBits = 63;
+		for (int i = 0; i < numberOfBits - 1; i++) {
+			//if bits at ith and i+1 th postions are not same.
+			if (((number >>> i) & 1) != ((number >>> (i +1)) & 1)) {
+				//swap them
+				number ^=  (1<<i) | (1<<(i+1));
+				return number;
+			}
+			
+		}
+		
+		
+		throw new IllegalArgumentException("All bits are either 0 or 1");
+	}
+    
     private long bitAtGivenPosition(int position, long number) {
     	number = number >>> position;
     	return number & 1;
