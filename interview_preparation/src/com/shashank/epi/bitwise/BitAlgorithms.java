@@ -108,6 +108,36 @@ class BitAlgorithms {
 		return sum;
 	}
     
+    
+    public long sum(long x, long  y) {
+    	long ak = 0;
+    	long bk = 0;
+    	long tmpX = x;
+    	long tmpY = y;
+    	long k = 1;
+    	long carryOut = 0;
+    	long carryIn = 0;
+    	long sum = 0;
+    	while(tmpX != 0 | tmpY != 0) {
+    		 
+	    	ak = x & k;
+	    	bk = y & k;
+	    	carryOut = (ak & bk) | (ak & carryIn) | (bk & carryIn);
+	    	sum |= carryIn ^ ak ^ bk;
+
+	    	carryIn = carryOut << 1;
+	    	
+	    	k <<= 1;
+	    	tmpX >>>= 1;
+	    	tmpY >>>= 1;
+    	}
+
+    	
+    	return sum |= carryIn;
+    }
+    
+    
+    
     private long bitAtGivenPosition(int position, long number) {
     	number = number >>> position;
     	return number & 1;
