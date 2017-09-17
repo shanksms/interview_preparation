@@ -93,6 +93,21 @@ class BitAlgorithms {
 		throw new IllegalArgumentException("All bits are either 0 or 1");
 	}
     
+    public long multiply(long x, long y) {
+		long sum = 0;
+		while(x != 0) {
+			
+			if ((x & 1) != 0) {
+				sum = sum + y;
+			}
+			x >>>= 1;
+			y <<= 1;
+		}
+		
+		
+		return sum;
+	}
+    
     private long bitAtGivenPosition(int position, long number) {
     	number = number >>> position;
     	return number & 1;

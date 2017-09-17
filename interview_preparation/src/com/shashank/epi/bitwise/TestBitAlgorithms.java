@@ -59,4 +59,10 @@ public class TestBitAlgorithms {
 		//expected output is 5
 		assertEquals(5, bitAlgorithms.closestNumberWithSameWeightOptimized(number));
 	}
+	
+	@Test
+	public void testMultiply() {
+		
+		assertEquals(30, bitAlgorithms.multiply(5, 6));
+	}
 }
