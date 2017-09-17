@@ -49,8 +49,8 @@ public class TestBitAlgorithms {
 	
 	@Test
 	public void testClosestNumberWithSameWeight() {
-		long number = 8;
-		//expected output is 4
-		assertEquals(4, bitAlgorithms.closestNumberWithSameWeight(number));
+		long number = 6;
+		//expected output is 5
+		assertEquals(5, bitAlgorithms.closestNumberWithSameWeight(number));
 	}
 }
