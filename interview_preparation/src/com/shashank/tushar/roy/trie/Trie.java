@@ -31,14 +31,38 @@ public class Trie {
 	public void insert(String word) {
 		TrieNode currentNode = root; 
 		for (int i = 0; i< word.length(); i++) {
-			if (currentNode.children.get(word.charAt(i)) == null) {
-				TrieNode tNode = new TrieNode();
-				root.children.put(word.charAt(i), tNode);
-				currentNode = tNode;
+			char ch = word.charAt(i);
+			TrieNode childNode = currentNode.children.get(ch) ;
+			
+			if (childNode == null) {
+				childNode = new TrieNode();
+				currentNode.children.put(word.charAt(i), childNode);
 			}
+			currentNode = childNode;
+
 		}
 		
 		currentNode.endOfWorld = true;
+	}
+	
+	public boolean searchWord(String word) {
+		char cArr [] = word.toCharArray();
+		TrieNode currentNode = root; 
+		for ( int i = 0; i < word.length(); i++) {
+			char ch = word.charAt(i);
+			if (currentNode.children.containsKey(word.charAt(i))) {
+				currentNode = currentNode.children.get(ch);
+			} else {
+				return false;
+			}
+			
+		}
+
+		if (currentNode.endOfWorld) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -46,6 +70,11 @@ public class Trie {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		Trie trie = new Trie();
+		trie.insert("shashank");
+		trie.insert("abc");
+		System.out.println(trie.searchWord("abc"));
+		System.out.println(trie.searchWord("shashank"));
 
 	}
 
